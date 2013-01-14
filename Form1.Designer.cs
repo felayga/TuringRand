@@ -30,7 +30,7 @@
         {
             this.button_randomize = new System.Windows.Forms.Button();
             this.textbox_boredom = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_boredom = new System.Windows.Forms.Label();
             this.numeric_width = new System.Windows.Forms.NumericUpDown();
             this.numeric_height = new System.Windows.Forms.NumericUpDown();
             this.numeric_states = new System.Windows.Forms.NumericUpDown();
@@ -50,6 +50,9 @@
             this.textbox_machines = new WindowsFormsApplication2.Forms.TextBoxNonStupid();
             this.button_singlestep = new System.Windows.Forms.Button();
             this.checkbox_executionstate = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numeric_executionrate = new System.Windows.Forms.NumericUpDown();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_height)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_states)).BeginInit();
@@ -57,6 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numeric_instances)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_executionrate)).BeginInit();
             this.SuspendLayout();
             // 
             // button_randomize
@@ -64,7 +68,7 @@
             this.button_randomize.AutoSize = true;
             this.button_randomize.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button_randomize.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_randomize.Location = new System.Drawing.Point(500, 104);
+            this.button_randomize.Location = new System.Drawing.Point(500, 156);
             this.button_randomize.Margin = new System.Windows.Forms.Padding(0);
             this.button_randomize.Name = "button_randomize";
             this.button_randomize.Size = new System.Drawing.Size(125, 26);
@@ -77,30 +81,32 @@
             this.textbox_boredom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textbox_boredom.Enabled = false;
             this.textbox_boredom.Location = new System.Drawing.Point(500, 52);
-            this.textbox_boredom.Margin = new System.Windows.Forms.Padding(0);
+            this.textbox_boredom.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.textbox_boredom.Name = "textbox_boredom";
             this.textbox_boredom.ReadOnly = true;
             this.textbox_boredom.Size = new System.Drawing.Size(125, 22);
             this.textbox_boredom.TabIndex = 3;
             // 
-            // label1
+            // label_boredom
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Enabled = false;
-            this.label1.Location = new System.Drawing.Point(500, 26);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 26);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Boredom:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.label_boredom.AutoSize = true;
+            this.label_boredom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_boredom.Enabled = false;
+            this.label_boredom.Location = new System.Drawing.Point(500, 26);
+            this.label_boredom.Margin = new System.Windows.Forms.Padding(0);
+            this.label_boredom.MaximumSize = new System.Drawing.Size(0, 26);
+            this.label_boredom.MinimumSize = new System.Drawing.Size(0, 26);
+            this.label_boredom.Name = "label_boredom";
+            this.label_boredom.Size = new System.Drawing.Size(125, 26);
+            this.label_boredom.TabIndex = 5;
+            this.label_boredom.Text = "Boredom:";
+            this.label_boredom.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // numeric_width
             // 
             this.numeric_width.AutoSize = true;
             this.numeric_width.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeric_width.Location = new System.Drawing.Point(500, 156);
+            this.numeric_width.Location = new System.Drawing.Point(500, 208);
             this.numeric_width.Margin = new System.Windows.Forms.Padding(0);
             this.numeric_width.Maximum = new decimal(new int[] {
             4096,
@@ -125,7 +131,7 @@
             // 
             this.numeric_height.AutoSize = true;
             this.numeric_height.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeric_height.Location = new System.Drawing.Point(625, 156);
+            this.numeric_height.Location = new System.Drawing.Point(625, 208);
             this.numeric_height.Margin = new System.Windows.Forms.Padding(0);
             this.numeric_height.Maximum = new decimal(new int[] {
             4096,
@@ -150,7 +156,7 @@
             // 
             this.numeric_states.AutoSize = true;
             this.numeric_states.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeric_states.Location = new System.Drawing.Point(500, 208);
+            this.numeric_states.Location = new System.Drawing.Point(500, 260);
             this.numeric_states.Margin = new System.Windows.Forms.Padding(0);
             this.numeric_states.Maximum = new decimal(new int[] {
             1024,
@@ -175,7 +181,7 @@
             // 
             this.numeric_values.AutoSize = true;
             this.numeric_values.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeric_values.Location = new System.Drawing.Point(625, 208);
+            this.numeric_values.Location = new System.Drawing.Point(625, 260);
             this.numeric_values.Margin = new System.Windows.Forms.Padding(0);
             this.numeric_values.Maximum = new decimal(new int[] {
             29,
@@ -200,7 +206,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(500, 130);
+            this.label2.Location = new System.Drawing.Point(500, 182);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 26);
@@ -212,7 +218,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(625, 130);
+            this.label4.Location = new System.Drawing.Point(625, 182);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(125, 26);
@@ -224,7 +230,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(500, 182);
+            this.label5.Location = new System.Drawing.Point(500, 234);
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(125, 26);
@@ -236,7 +242,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(625, 182);
+            this.label6.Location = new System.Drawing.Point(625, 234);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 26);
@@ -249,7 +255,7 @@
             this.button_restart.AutoSize = true;
             this.button_restart.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button_restart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_restart.Location = new System.Drawing.Point(625, 104);
+            this.button_restart.Location = new System.Drawing.Point(625, 156);
             this.button_restart.Margin = new System.Windows.Forms.Padding(0);
             this.button_restart.Name = "button_restart";
             this.button_restart.Size = new System.Drawing.Size(125, 26);
@@ -261,7 +267,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(500, 234);
+            this.label3.Location = new System.Drawing.Point(500, 286);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 26);
@@ -273,7 +279,7 @@
             // 
             this.numeric_instances.AutoSize = true;
             this.numeric_instances.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeric_instances.Location = new System.Drawing.Point(500, 260);
+            this.numeric_instances.Location = new System.Drawing.Point(500, 312);
             this.numeric_instances.Margin = new System.Windows.Forms.Padding(0);
             this.numeric_instances.Maximum = new decimal(new int[] {
             16,
@@ -300,7 +306,7 @@
             this.checkbox_samemachine.Checked = true;
             this.checkbox_samemachine.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkbox_samemachine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkbox_samemachine.Location = new System.Drawing.Point(631, 260);
+            this.checkbox_samemachine.Location = new System.Drawing.Point(631, 312);
             this.checkbox_samemachine.Margin = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.checkbox_samemachine.Name = "checkbox_samemachine";
             this.checkbox_samemachine.Size = new System.Drawing.Size(119, 26);
@@ -328,33 +334,38 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label_boredom, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textbox_boredom, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.checkbox_autoreset, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.button_randomize, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.button_restart, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.numeric_width, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.numeric_height, 2, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.numeric_states, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 2, 7);
-            this.tableLayoutPanel1.Controls.Add(this.numeric_values, 2, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.numeric_instances, 1, 10);
-            this.tableLayoutPanel1.Controls.Add(this.checkbox_samemachine, 2, 10);
-            this.tableLayoutPanel1.Controls.Add(this.button_fromstring, 1, 12);
-            this.tableLayoutPanel1.Controls.Add(this.textbox_machines, 1, 13);
+            this.tableLayoutPanel1.Controls.Add(this.button_randomize, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.button_restart, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.numeric_width, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 2, 7);
+            this.tableLayoutPanel1.Controls.Add(this.numeric_height, 2, 8);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.numeric_states, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 2, 9);
+            this.tableLayoutPanel1.Controls.Add(this.numeric_values, 2, 10);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.numeric_instances, 1, 12);
+            this.tableLayoutPanel1.Controls.Add(this.checkbox_samemachine, 2, 12);
+            this.tableLayoutPanel1.Controls.Add(this.button_fromstring, 1, 14);
+            this.tableLayoutPanel1.Controls.Add(this.textbox_machines, 1, 15);
             this.tableLayoutPanel1.Controls.Add(this.button_singlestep, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.checkbox_executionstate, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.numeric_executionrate, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.textBox1, 2, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 14;
+            this.tableLayoutPanel1.RowCount = 16;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
@@ -377,7 +388,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.tableLayoutPanel1.SetRowSpan(this.pictureBox1, 14);
+            this.tableLayoutPanel1.SetRowSpan(this.pictureBox1, 16);
             this.pictureBox1.Size = new System.Drawing.Size(480, 480);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -387,7 +398,7 @@
             this.button_fromstring.AutoSize = true;
             this.button_fromstring.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button_fromstring.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_fromstring.Location = new System.Drawing.Point(500, 312);
+            this.button_fromstring.Location = new System.Drawing.Point(500, 364);
             this.button_fromstring.Margin = new System.Windows.Forms.Padding(0);
             this.button_fromstring.Name = "button_fromstring";
             this.button_fromstring.Size = new System.Drawing.Size(125, 26);
@@ -399,12 +410,12 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.textbox_machines, 2);
             this.textbox_machines.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textbox_machines.Location = new System.Drawing.Point(500, 338);
+            this.textbox_machines.Location = new System.Drawing.Point(500, 390);
             this.textbox_machines.Margin = new System.Windows.Forms.Padding(0);
             this.textbox_machines.Multiline = true;
             this.textbox_machines.Name = "textbox_machines";
             this.textbox_machines.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textbox_machines.Size = new System.Drawing.Size(250, 142);
+            this.textbox_machines.Size = new System.Drawing.Size(250, 90);
             this.textbox_machines.TabIndex = 20;
             // 
             // button_singlestep
@@ -434,6 +445,55 @@
             this.checkbox_executionstate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkbox_executionstate.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(500, 78);
+            this.label7.Margin = new System.Windows.Forms.Padding(0);
+            this.label7.MaximumSize = new System.Drawing.Size(0, 26);
+            this.label7.MinimumSize = new System.Drawing.Size(0, 26);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(125, 26);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "Execution Rate:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // numeric_executionrate
+            // 
+            this.numeric_executionrate.DecimalPlaces = 2;
+            this.numeric_executionrate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numeric_executionrate.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numeric_executionrate.Location = new System.Drawing.Point(500, 104);
+            this.numeric_executionrate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.numeric_executionrate.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numeric_executionrate.Name = "numeric_executionrate";
+            this.numeric_executionrate.Size = new System.Drawing.Size(125, 22);
+            this.numeric_executionrate.TabIndex = 25;
+            this.numeric_executionrate.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(625, 104);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(125, 22);
+            this.textBox1.TabIndex = 26;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -453,6 +513,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_executionrate)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -462,7 +523,7 @@
         private System.Windows.Forms.Button button_randomize;
         private WindowsFormsApplication2.Forms.PictureBoxInterpolationMode pictureBox1;
         private System.Windows.Forms.TextBox textbox_boredom;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_boredom;
         private System.Windows.Forms.NumericUpDown numeric_width;
         private System.Windows.Forms.NumericUpDown numeric_height;
         private System.Windows.Forms.NumericUpDown numeric_states;
@@ -481,6 +542,9 @@
         private System.Windows.Forms.Button button_fromstring;
         private System.Windows.Forms.Button button_singlestep;
         private System.Windows.Forms.CheckBox checkbox_executionstate;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numeric_executionrate;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
