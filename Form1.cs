@@ -32,15 +32,25 @@ namespace WindowsFormsApplication2
             this.button_fromstring.Click += new EventHandler(button_fromstring_Click);
             this.button_singlestep.Click += new EventHandler(button_singlestep_Click);
 
+            this.numeric_executionrate.ValueChanged += new EventHandler(numeric_executionrate_ValueChanged);
+
             timer = new Timer();
             timer.Interval = 50;
             timer.Tick += new EventHandler(timer_Tick);
 
 #if BOREDOM_ENABLED
             this.checkbox_autoreset.Enabled = true;
-            this.label1.Enabled = true;
+            this.label_boredom.Enabled = true;
             this.textbox_boredom.Enabled = true;
 #endif
+        }
+
+        int executionrate;
+
+        void numeric_executionrate_ValueChanged(object sender, EventArgs e)
+        {
+            executionrate = (int)Math.Round((decimal)(image.Width * image.Height) * this.numeric_executionrate.Value / 100.0m);
+            if (executionrate < 1) executionrate = 1;
         }
 
         void button_fromstring_Click(object sender, EventArgs e)
@@ -79,7 +89,7 @@ namespace WindowsFormsApplication2
             this.pictureBox1.BackgroundImage = null;
             _image.Lock();
 
-            for (int n = 0; n < this.numeric_width.Value * this.numeric_height.Value; n++)
+            for (int n = 0; n < executionrate; n++)
             {
                 for (int i = 0; i < instances.Count; i++)
                 {
@@ -165,6 +175,9 @@ namespace WindowsFormsApplication2
             string text = "w" + this.numeric_width.Value.ToString() + "h" + this.numeric_height.Value.ToString();
 
             image = new Bitmap((int)this.numeric_width.Value, (int)this.numeric_height.Value, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+            numeric_executionrate_ValueChanged(null, null);
+
             _image = new DataTypes.BitmapUnsafe(image);
 
             for (int y = 0; y < this.numeric_height.Value; y++)
@@ -232,7 +245,6 @@ namespace WindowsFormsApplication2
         {
             try
             {
-
                 boring = int.MinValue;
                 boredom = 0;
 
@@ -255,6 +267,8 @@ namespace WindowsFormsApplication2
                 this.pictureBox1.BackgroundImage = null;
                 image = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
                 _image = new DataTypes.BitmapUnsafe(image);
+
+                numeric_executionrate_ValueChanged(null, null);
 
                 for (int y = 0; y < height; y++)
                 {
