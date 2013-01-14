@@ -47,8 +47,11 @@ namespace WindowsFormsApplication2
 
         int executionrate;
 
+        bool numeric_executionrate_override = false;
         void numeric_executionrate_ValueChanged(object sender, EventArgs e)
         {
+            if (numeric_executionrate_override) return;
+
             executionrate = (int)Math.Round((decimal)(image.Width * image.Height) * this.numeric_executionrate.Value / 100.0m);
             if (executionrate < 1) executionrate = 1;
         }
@@ -172,7 +175,10 @@ namespace WindowsFormsApplication2
             this.textbox_boredom.Text = boredom.ToString();
             this.pictureBox1.BackgroundImage = null;
 
-            string text = "w" + this.numeric_width.Value.ToString() + "h" + this.numeric_height.Value.ToString();
+            string text = "r" + this.numeric_executionrate.Value.ToString();
+                
+                
+            text += "w" + this.numeric_width.Value.ToString() + "h" + this.numeric_height.Value.ToString();
 
             image = new Bitmap((int)this.numeric_width.Value, (int)this.numeric_height.Value, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
@@ -248,8 +254,27 @@ namespace WindowsFormsApplication2
                 boring = int.MinValue;
                 boredom = 0;
 
-                value = value.Substring(1);
                 int index;
+
+                if (value[0] == 'w')
+                {
+                    value = value.Substring(1);
+                    this.numeric_executionrate.Value = 100.0m;
+                }
+                else if (value[0] == 'r')
+                {
+                    value = value.Substring(1);
+                    index = value.IndexOf('w');
+
+                    decimal rate = Convert.ToDecimal(value.Substring(0, index));
+
+                    numeric_executionrate_override = true;
+                    this.numeric_executionrate.Value = rate;
+                    numeric_executionrate_override = false;
+
+                    value = value.Substring(index + 1);
+                }
+                else throw new Exception("unrecognized initial character");
 
                 index = value.IndexOf('h');
 
