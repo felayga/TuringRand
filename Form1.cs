@@ -54,6 +54,15 @@ namespace WindowsFormsApplication2
 
             executionrate = (int)Math.Round((decimal)(image.Width * image.Height) * this.numeric_executionrate.Value / 100.0m);
             if (executionrate < 1) executionrate = 1;
+
+            if (this.textbox_machines.TextLength < 1) return;
+            if (this.textbox_machines.Text[0] != 'r') return;
+
+            int index = this.textbox_machines.Text.IndexOf('w');
+            if (index < 10)
+            {
+                this.textbox_machines.Text = "r" + this.numeric_executionrate.Value.ToString() + this.textbox_machines.Text.Substring(index);
+            }
         }
 
         void button_fromstring_Click(object sender, EventArgs e)
