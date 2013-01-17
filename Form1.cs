@@ -10,6 +10,15 @@ using System.Text;
 using System.Windows.Forms;
 using System.Numerics;
 
+/*
+ * Interesting Patterns
+ * 
+ * w128h128v5i2(s4i1x91y74[4m2][5m2][5m2][1m3])(s4i2x3y110[5m3][4m1][5m0][4m1])
+ * 
+ * 
+ */
+
+
 namespace WindowsFormsApplication2
 {
     public partial class Form1 : Form
@@ -56,12 +65,17 @@ namespace WindowsFormsApplication2
             if (executionrate < 1) executionrate = 1;
 
             if (this.textbox_machines.TextLength < 1) return;
-            if (this.textbox_machines.Text[0] != 'r') return;
-
-            int index = this.textbox_machines.Text.IndexOf('w');
-            if (index < 10)
+            if (this.textbox_machines.Text[0] != 'r')
             {
-                this.textbox_machines.Text = "r" + this.numeric_executionrate.Value.ToString() + this.textbox_machines.Text.Substring(index);
+                this.textbox_machines.Text = "r" + this.numeric_executionrate.Value.ToString() + this.textbox_machines.Text;
+            }
+            else
+            {
+                int index = this.textbox_machines.Text.IndexOf('w');
+                if (index < 10)
+                {
+                    this.textbox_machines.Text = "r" + this.numeric_executionrate.Value.ToString() + this.textbox_machines.Text.Substring(index);
+                }
             }
         }
 
