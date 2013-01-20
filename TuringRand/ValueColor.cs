@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace WindowsFormsApplication2.TuringRand
+namespace TuringRand.TuringMachine
 {
     public class ColorValues : Dictionary<Color, int>
     {

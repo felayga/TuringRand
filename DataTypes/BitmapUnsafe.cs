@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace WindowsFormsApplication2.DataTypes
+namespace TuringRand.DataTypes
 {
     public unsafe class BitmapUnsafe
     {

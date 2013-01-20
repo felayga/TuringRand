@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication2
+﻿namespace TuringRand
 {
     partial class Form1
     {
@@ -45,9 +45,9 @@
             this.checkbox_samemachine = new System.Windows.Forms.CheckBox();
             this.checkbox_autoreset = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new WindowsFormsApplication2.Forms.PictureBoxInterpolationMode();
+            this.pictureBox1 = new TuringRand.Forms.PictureBoxInterpolationMode();
             this.button_fromstring = new System.Windows.Forms.Button();
-            this.textbox_machines = new WindowsFormsApplication2.Forms.TextBoxNonStupid();
+            this.textbox_machines = new TuringRand.Forms.TextBoxNonStupid();
             this.button_singlestep = new System.Windows.Forms.Button();
             this.checkbox_executionstate = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -521,7 +521,7 @@
         #endregion
 
         private System.Windows.Forms.Button button_randomize;
-        private WindowsFormsApplication2.Forms.PictureBoxInterpolationMode pictureBox1;
+        private TuringRand.Forms.PictureBoxInterpolationMode pictureBox1;
         private System.Windows.Forms.TextBox textbox_boredom;
         private System.Windows.Forms.Label label_boredom;
         private System.Windows.Forms.NumericUpDown numeric_width;
@@ -538,7 +538,7 @@
         private System.Windows.Forms.CheckBox checkbox_samemachine;
         private System.Windows.Forms.CheckBox checkbox_autoreset;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private WindowsFormsApplication2.Forms.TextBoxNonStupid textbox_machines;
+        private TuringRand.Forms.TextBoxNonStupid textbox_machines;
         private System.Windows.Forms.Button button_fromstring;
         private System.Windows.Forms.Button button_singlestep;
         private System.Windows.Forms.CheckBox checkbox_executionstate;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace WindowsFormsApplication2.TuringRand
+namespace TuringRand.TuringMachine
 {
     public class State
     {
@@ -17,6 +17,7 @@ namespace WindowsFormsApplication2.TuringRand
             MoveUp,
             MoveDown,
             MoveNone,
+            //Reprogram,
             readvalue  // this entry must be at the bottom, integer maths from enum
         }
 
@@ -50,13 +51,18 @@ namespace WindowsFormsApplication2.TuringRand
                 case 5:
                     action = Action.MoveNone;
                     break;
+                /*
+                case 6:
+                    action = Action.Reprogram;
+                    break;
+                */
                 default:
                     action = Action.readvalue;
                     break;
             }
         }
 
-        private void handle(Action action, ref DataTypes.BitmapUnsafe image, ref int x, ref int y)
+        private int handle(Action action, ref DataTypes.BitmapUnsafe image, ref int x, ref int y)
         {
             switch (action)
             {
@@ -103,6 +109,10 @@ namespace WindowsFormsApplication2.TuringRand
                     while (subwrite >= maxstates) subwrite -= maxstates;
                     image.SetPixel(x, y, ColorValues.intcolor_from_value[subwrite]);
                     break;
+                /*
+                case Action.Reprogram:
+                    return ColorValues.value_from_intcolor[image.GetPixel(x, y)] + magnitude;
+                */
                 case Action.readvalue:
                     int subread = ColorValues.value_from_intcolor[image.GetPixel(x, y)] + magnitude;
 
@@ -110,11 +120,13 @@ namespace WindowsFormsApplication2.TuringRand
                     handle((Action)subread, ref image, ref x, ref y);
                     break;
             }
+            return -1;
         }
 
         public int Handle(ref DataTypes.BitmapUnsafe image, ref int x, ref int y)
         {
-            handle(action, ref image, ref x, ref y);
+            int retval = handle(action, ref image, ref x, ref y);
+            if (retval >= 0) return -1 - retval;
 
             return ColorValues.value_from_intcolor[image.GetPixel(x, y)];
         }

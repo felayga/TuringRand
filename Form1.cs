@@ -15,11 +15,15 @@ using System.Numerics;
  * 
  * w128h128v5i2(s4i1x91y74[4m2][5m2][5m2][1m3])(s4i2x3y110[5m3][4m1][5m0][4m1])
  * 
+ * Put together a few "counting" machines similar to this one:
+ *   r100w64h64v2i1(s4i2x11y5[5m1][5m0][1m1][5m0])
+ * Get strange results:
+ *   r100w64h64v2i4(s4i2x11y5[5m1][5m0][1m1][5m0])(s4i0x15y4[5m0][5m0][2m1][5m0])(s4i1x35y57[5m4][5m3][4m3][0m0])(s4i1x13y49[4m2][5m0][1m4][0m0])
  * 
  */
 
 
-namespace WindowsFormsApplication2
+namespace TuringRand
 {
     public partial class Form1 : Form
     {
@@ -108,7 +112,7 @@ namespace WindowsFormsApplication2
         private int boredom = 0;
         private BigInteger boring = -1;
 
-        List<TuringRand.StateMachine> instances;
+        List<TuringMachine.StateMachine> instances;
 
         void button_singlestep_Click(object sender, EventArgs e)
         {
@@ -221,46 +225,46 @@ namespace WindowsFormsApplication2
 
             if (this.checkbox_samemachine.Checked)
             {
-                List<TuringRand.State> states = new List<TuringRand.State>();
+                List<TuringMachine.State> states = new List<TuringMachine.State>();
 
                 text += "m" + this.numeric_states.Value.ToString() + "s";
 
                 for (int n = 0; n < this.numeric_states.Value; n++)
                 {
-                    TuringRand.State state = new TuringRand.State((int)this.numeric_values.Value);
+                    TuringMachine.State state = new TuringMachine.State((int)this.numeric_values.Value);
                     states.Add(state);
 
                     text += state.ToString();
                 }
 
-                instances = new List<TuringRand.StateMachine>();
+                instances = new List<TuringMachine.StateMachine>();
 
                 text += "i" + this.numeric_instances.Value.ToString();
 
                 for (int n = 0; n < this.numeric_instances.Value; n++)
                 {
-                    TuringRand.StateMachine what = new TuringRand.StateMachine(_image, states);
+                    TuringMachine.StateMachine what = new TuringMachine.StateMachine(_image, states);
                     instances.Add(what);
                     text += what.ToString(true);
                 }
             }
             else
             {
-                instances = new List<TuringRand.StateMachine>();
+                instances = new List<TuringMachine.StateMachine>();
 
                 text += "i" + this.numeric_instances.Value.ToString();
 
                 for (int n = 0; n < this.numeric_instances.Value; n++)
                 {
-                    List<TuringRand.State> states = new List<TuringRand.State>();
+                    List<TuringMachine.State> states = new List<TuringMachine.State>();
 
                     for (int subn = 0; subn < this.numeric_states.Value; subn++)
                     {
-                        TuringRand.State state = new TuringRand.State((int)this.numeric_values.Value);
+                        TuringMachine.State state = new TuringMachine.State((int)this.numeric_values.Value);
                         states.Add(state);
                     }
 
-                    TuringRand.StateMachine what = new TuringRand.StateMachine(_image, states);
+                    TuringMachine.StateMachine what = new TuringMachine.StateMachine(_image, states);
                     instances.Add(what);
 
                     text += what.ToString(false);
@@ -347,7 +351,7 @@ namespace WindowsFormsApplication2
 
                 if (samemachine)
                 {
-                    List<TuringRand.State> states = new List<TuringRand.State>();
+                    List<TuringMachine.State> states = new List<TuringMachine.State>();
 
                     index = value.IndexOf('s');
 
@@ -359,12 +363,12 @@ namespace WindowsFormsApplication2
                     {
                         index = value.IndexOf(']');
 
-                        TuringRand.State state = TuringRand.State.FromString(value.Substring(0, index + 1), numeric_values);
+                        TuringMachine.State state = TuringMachine.State.FromString(value.Substring(0, index + 1), numeric_values);
                         value = value.Substring(index + 1);
                         states.Add(state);
                     }
 
-                    instances = new List<TuringRand.StateMachine>();
+                    instances = new List<TuringMachine.StateMachine>();
 
                     value = value.Substring(1);
 
@@ -378,14 +382,14 @@ namespace WindowsFormsApplication2
                     {
                         index = value.IndexOf(')');
 
-                        TuringRand.StateMachine what = TuringRand.StateMachine.FromString(_image, value.Substring(0, index + 1), states);
+                        TuringMachine.StateMachine what = TuringMachine.StateMachine.FromString(_image, value.Substring(0, index + 1), states);
                         value = value.Substring(index + 1);
                         instances.Add(what);
                     }
                 }
                 else
                 {
-                    instances = new List<TuringRand.StateMachine>();
+                    instances = new List<TuringMachine.StateMachine>();
 
                     index = value.IndexOf('(');
 
@@ -397,7 +401,7 @@ namespace WindowsFormsApplication2
                     {
                         index = value.IndexOf(')');
 
-                        TuringRand.StateMachine what = TuringRand.StateMachine.FromString(_image, value.Substring(0, index + 1), numeric_values);
+                        TuringMachine.StateMachine what = TuringMachine.StateMachine.FromString(_image, value.Substring(0, index + 1), numeric_values);
                         value = value.Substring(index + 1);
                         instances.Add(what);
                     }

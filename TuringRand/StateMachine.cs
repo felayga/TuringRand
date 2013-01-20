@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WindowsFormsApplication2.TuringRand
+namespace TuringRand.TuringMachine
 {
     public class StateMachine
     {
@@ -43,8 +43,24 @@ namespace WindowsFormsApplication2.TuringRand
         public void Handle()
         {
             int newstate = state.Handle(ref _bitmap, ref x, ref y);
-            while (newstate >= _states.Count) newstate -= _states.Count;
-            state = _states[newstate];
+            if (newstate < 0)
+            {
+                int reprogramindex = -newstate - 1;
+
+                int otherparam=0;
+                while (reprogramindex >= _states.Count)
+                {
+                    reprogramindex -= _states.Count;
+                    otherparam++;
+                }
+
+                _states[reprogramindex] = new State(_states.Count);
+            }
+            else
+            {
+                while (newstate >= _states.Count) newstate -= _states.Count;
+                state = _states[newstate];
+            }
         }
 
         public string ToString(bool dupmachine)

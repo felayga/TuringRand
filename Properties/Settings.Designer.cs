@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApplication2.Properties {
+namespace TuringRand.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
